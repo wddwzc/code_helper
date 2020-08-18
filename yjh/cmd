@@ -1,0 +1,7 @@
+git add ./**** 
+git status
+git commit -m "yjht"
+git push
+
+git pull 
+git checkout .
