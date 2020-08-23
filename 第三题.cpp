@@ -125,12 +125,13 @@ int main()
                 }
                 if (!mapping.count(ind1)) {
                     mapping[ind1].insert(ind2);
+                    dfs(mapping, ind1, ind2);
                 }
                 else {
                     if (!mapping[ind1].count(ind2)) {
                         mapping[ind1].insert(ind2);
                     }
-                    dfs(mapping, ind1, ind1);
+                    dfs(mapping, ind1, ind2);
                 }
             }
             else {
@@ -141,6 +142,8 @@ int main()
         if (flag)  cout << "True" << endl;
         else        cout << "False" << endl;
 
+        flag = true;
+
     }
     
     system("pause");
@@ -149,11 +152,12 @@ int main()
 
 
 void dfs(unordered_map<int, set<int>> &mapping, int index_judge, int index2) {
+    // cout << "mapping size: " << mapping[index2].size() << endl;
     if (!flag) return;
     if (!mapping.count(index2)) return;
     for (auto ele : mapping[index2]) {
         int next = find(ele);
-        cout << next << endl;
+        // cout << next << endl;
         if (index_judge == next) {
             flag = false;
         }
